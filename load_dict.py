@@ -17,6 +17,9 @@ def translate(word):
 
 while True:
     word = input("Please input a word, To Stop the program type Stop This: ")
+    if read_data(word) != True:
+        print("Sorry that word does not exist")
+        continue
     read_data(word)
     if word == "Stop This":
         break
