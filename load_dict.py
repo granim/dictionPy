@@ -9,6 +9,12 @@ def read_data(word):
             print(value)
 
 
+#A simpler way
+def translate(word):
+    return data[word]
+
+
+
 while True:
     word = input("Please input a word, To Stop the program type Stop This: ")
     read_data(word)
