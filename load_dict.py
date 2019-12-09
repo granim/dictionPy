@@ -1,29 +1,29 @@
 import json
+from difflib import get_close_matches
 
 data = json.load(open("data.json"))
 
 
+#My way
 def read_data(word):
-    for key, value in data.items():
-        if word == key:
-            print(value)
-
+        if word in data:
+            return data[word]
+        elif len(get_close_matches(word, data.keys())) > 0:
+            return "Did you mean %s instead? " % get_close_matches(word, data.keys())[0]
+        else:
+            return "The word does not exist"    
+            
 
 #The instuctors way
 def translate(word):
+    word = word.lower()
     if word in data:
         return data[word]
-    else
+    else:
         return "The word does not exist."
 
 
-# My code 
 while True:
-    word = input("Please input a word, To Stop the program type Stop This: ")
-    if read_data(word) != True:
-        print("Sorry that word does not exist")
-        continue
-    read_data(word)
-    if word == "Stop This":
-        break
+    word = input("Please input a word, To Stop the program type Stop This: ").lower()
+    print(read_data(word)) 
     continue
