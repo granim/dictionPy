@@ -12,8 +12,12 @@ def read_data(word):
             return ',\n '.join(data[word])
         print(type(data[word]))
         return data[word][0]
-    elif word.capitalize() and data[word].capitalize():
-        return data[word][0]    
+    # elif word.capitalize() and data[word].capitalize():
+    #     return data[word][0]    
+    elif word.title() in data:
+        return data[word.title()]
+    elif word.upper() in data:
+        return data[word.upper()]    
     elif len(get_close_matches(word, data.keys())) > 0:
         yn = input("Did you mean %s instead? Enter Y if yes, or N if no. " % get_close_matches(word, data.keys())[0])
         if yn == "y":
